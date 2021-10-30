@@ -1,0 +1,58 @@
+%
+% File: introduction.tex
+% Author: Paul Le Tran
+% Description: Introduction chapter for the maths thesis.
+%
+\let\textcircled=\pgftextcircled
+\chapter{Introduction}
+\label{chap:intro}
+
+\initial{I}n the past decade, the U.S. economy has experienced dramatic declines in productivity, business dynamism (i.e. firm entry and turnover rates), and job growth \cite[Baily and Montalbano, 2016]{Baily2016}. For reasons not yet fully understood, American firms are becoming less innovative and competitive. Accompanying this increase in market concentration comes a concern about the state of investment within the U.S.; if large incumbent firms lack competition, they may enjoy inflated profit levels and lack incentives to innovate and invest in new technologies \cite[Alesina et al., 2005]{Alesina2005}. To start, we test whether industry concentration is indeed positively correlated with profit levels, through means of decreased competition. Next, we explore the Profit Theory of Investment (the PTI), which would contradict these concerns of decreased investment and technological growth \cite[Merling, 2016]{CEPR2016}. This theory states that a firm’s investment is a positive function of its profits: Using Compustat North America and the Economic Census data, we test whether this hold true for U.S. firms in recent years. Through these two relationships, we test whether increased market concentration implies higher investment in the United States.\\
+
+%=======
+\section{Profits and Investment: The PTI}
+\label{sec:sec01}
+
+The PTI is elegant and simple; it states that investment I is a positive and direct function of profits, or
+\begin{equation}
+	I = f(\text{Profits}).
+\end{equation}
+The PTI “... implie[s] that all else equal, firms with higher profits invest more” \cite[Romer, 2012]{Romer2012}. The core of the PTI stems from how “theories of financial-market imperfections imply that internal finance is less costly than external finance” \cite[Romer, 2012]{Romer2012}. This discrepancy in costs can be attributed to three mechanisms: adverse selection, lack of flexibility, and monitoring costs. \\
+
+The Profit Theory of Investment is backed both theoretically and empirically. Taking the former approach, Alesina et al. confirmed a positive relationship between profits and investment. Focusing on “... the effects… of the fiscal policy channel… of public spending and taxes on labor costs and therefore profits,... [they derived that] ceteris paribus, an increase… in the real wage decreases the shadow value of capital, and hence investment” \cite[Alesina et al., 1999]{Alesina1999}. This theory was further addressed through a large empirical study which compared the investment behaviours of different types of firms \cite[Fazzari et al., 1988]{Fazzari1988}. Firms in their sample were divided according to their dividend payments as a fraction of income. “Firms that pay high dividends can finance additional investment by reducing their dividends. Firms that pay low dividends, in contract, must rely on external finance” \cite[Romer, 2012]{Romer2012}. In other words, Fazarri et al. found that financial-market imperfections (i.e., the cost differences in financing methods) have a large effect on investment in low-dividend firms, as firms paying low dividends often must rely on external financing \cite[Fazzari et al., 1988]{Fazzari1988}. \\
+
+However, there exist several potential issues with this study. For one, firms such as Google and Facebook are examples of firms that pay little to no dividends, but are likely to not rely on external financing. Another issue with this study is one of reverse causality; firms that use internal financing for investment might not have enough cash left to pay high dividends. Furthermore, it's argued that even in firms facing barriers to external finance, there is little reason to expect a stronger relationship between investment and profitability \cite[Kaplan and Zingales, 1997]{Kaplan1997}. Specifically, they argued that the theory that financial-market imperfections are important to investment does not make strong predictions about the differences in the sensitivity of investment to profits across different kinds of firms \cite[Kaplan and Zingales, 1997]{Kaplan1997}. Furthermore, additional critiques of the PTI are that it’s possible for many firms to not be liquidity-constrained, and that firms with high profit levels may not actually invest their excess reserves (e.g., Apple). \\
+
+Research investigating this theory in the 21st century is limited in the sense of few modern publications. Given the recent declines in productivity in the U.S. economy, we find it prudent to use current data to test the PTI.
+
+\section{Industry Concentration and Profitability}
+\label{sec:sec02}
+
+Although microeconomic theory suggests that increases in market power allow for higher profitability, empirical evidence is mixed. It was found that the differences in profit rates, amongst industries with varying concentration ratios, are minimal \cite[Gort and Singamsetti, 1976]{Gort1976}. In contrast, a positive correlation between market share and profitability, via the proxy measurement of return on investment, was found \cite[Buzzell et al., 1975]{Buzzell1975}. In their Harvard Business Review article, they believe that increasing economies of scale, market power, and quality of management could explain the observation that increasing market share increases a firm’s chances of high profit margins, declining purchase-to-sales ratio, declining market costs as a percentage of sales, higher quality of goods, and higher prices \cite[Buzzell et al., 1975]{Buzzell1975}. \\
+
+Similar to the study done by Bailey and Montalbano, the Economist (2016) also found evidence supporting a less competitive, but higher profit U.S. economy overall \cite[The Economist, 2016]{Economist2016}. We take inspiration from previous studies and create our own model investigating the relationship between industry concentration and profitability in recent years. \\
+
+\section{Industry Concentration and Investment}
+\label{sec:sec03}
+
+\begin{dfn}
+	A market is considered to be \textit{perfectly competitive} if it possesses the following characteristics: \cite[Romer, 2012]{Romer2012}
+    \begin{itemize}
+    \item Large numbers of firms and consumers;
+    \item Perfect information amongst all firms and consumers;
+    \item No barriers to entry or exit;
+    \item Consumers are considered rational;
+    \item No externalities;
+    \item All firms are price takers;
+    \item All firms are profit maximising.
+    \end{itemize}
+\end{dfn}
+
+A market is considered imperfectly competitive if any of these conditions are violated, and becomes less competitive as it deviates further from the above characteristics. In perfectly competitive markets, all firms obtain zero profits in the long run. Therefore, it is possible that as a market becomes less competitive, firms will experience higher profit levels, and therefore increase their levels of investment. This theory is controversial because it goes against the common notion that market competition is ideal for both consumers and economic growth. Empirical studies have found conflicting conclusions about the effects of competition on investment levels. It was found that policies encouraging competition resulted in increased investment levels in non-manufacturing industries like energy and communications \cite[Alesina et al., 2005]{Alesina2005}. However, they also found that the promotion of market entry have possibly resulted in negative effects on network investment for the hard-lined telecommunications industry. Additional unrelated research found no evidence for a relationship between consolidation, via higher concentration, and an increase in investment in mobile markets \cite[Elixmann et al., 2015]{Elixmann2015}. We wish to contribute to this ongoing debate by not only using current data to test the linkage between industry concentration and investment, but also through investigating this relationship across multiple industries.
+
+\section{Going Forward}
+\label{sec:sec04}
+
+\initial{T}he next section will detail the dataset used for all analyses, created by merging both the Compustat North America and Economic Census datasets. We then move onward to discuss the series of multi-linear regression models that will be used to investigate the validity of the PTI. This is done in two stages. We first examine the connection between industry concentration and profitability. Afterwards, we look at the connection between profitability and investment (i.e., the PTI). If both stages show statistically significant relationships, we are therefore able to establish a connection between industry concentration and investment levels.
+
+%=========================================================

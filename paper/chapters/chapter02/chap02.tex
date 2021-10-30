@@ -1,0 +1,123 @@
+%
+% File: chap02.tex
+% Author: Derrick Choe, Paul Le Tran
+% Description: Regressions Diagnostics and Results.
+%
+\let\textcircled=\pgftextcircled
+\chapter{Regressions Diagnostics \& Results}
+\label{chap:3}
+
+%=========================================================
+
+\section{Industry Concentration \& Profitability}
+\label{sec:sec05}
+
+\initial{T}o establish the relationship between market conditions and profit levels, we perform a panel data analysis across U.S. industries. We aggregate Compustat firm-level data up to the most specific industry available by NAICS code (the 6-digit level), and compute median gross profit, net income, and total assets for each of these industries. We use medians as our measure of “average” industry characteristics to mitigate the effects of extreme outliers pulling the mean. Our measure for industry competitiveness is the percent of revenue held by the top 50 firms in an industry; whilst concentration ratios are available for the top 4, 8, and 20 firms, we select the top 50 measure in order to capture broader information about individual markets. We follow this same reasoning when selecting median industry and profit levels; we are less concerned with the macroeconomic effects of a smaller population of large concentrated firms, but instead are concerned with a persistent and widespread trend of uncompetitive yet profitable incumbent firms across industries.
+
+%https://cluteinstitute.com/ojs/index.php/JABR/article/download/2119/2096
+
+\subsection{Methodology}
+
+Recall from Section 2.1 that our Economic Census sample dataset is collected for only the years 2002, 2007, and 2012. As the time series component of our sample is too limited to perform proper longitudinal panel analysis, we rely on repeated cross-sectional analysis for each year. If the relationship between market concentration and profitability is statistically significant, of the same sign, and of similar magnitude across all three years, we have reason to believe that the general relationship between these two variables holds over time.
+
+\subsection{Diagnostics: Non-Manufacturing Industries}
+
+Under the guidance of repeated cross-sectional analysis, we conduct OLS estimations of Model (2) for non-manufacturing industries, and for years 2002, 2007, and 2012. Before attempting to perform statistical inference, we check whether our regression estimations suffer from heteroscedasticity. We first examine Model (2)'s residuals plots, for years 2002, 2007, and 2012, in Figure Matrix A.2. of the appendix. With such close clustering, it’s not initially obvious whether our model estimates are heteroscedastic. We therefore use the Breusch-Pagan-Godfrey test to formally detect this issue (displayed in Tables A.2., A.3., and A.4. of the appendix for years 2002, 2007, and 2012, respectively). We see that the test models' overall F scores are relatively high, and that the p-values are essentially zero. As such, we reject the null hypothesis of homoscedasticity in our models at the 5\% significance level, for all three years. \\
+
+\subsection{Diagnostics: Manufacturing Industries}
+Under the guidance of repeated cross-sectional analysis, we conduct OLS estimations of Model (3) for manufacturing industries, and for years 2002, 2007, and 2012. Before attempting to perform statistical inference, we check whether our regression estimations suffer from heteroscedasticity. We first examine Model (3)'s residuals plots, for years 2002, 2007, and 2012, in Figure Matrix A.3. of the appendix. With such close clustering, it's not initially obvious whether our model estimates are heteroscedastic. We therefore use the Breusch-Pagan-Godfrey test to formally detect this issue (displayed in Tables A.5., A.6., and A.7. of the appendix for years 2002, 2007, and 2012, respectively). We see that the test models' overall F scores are relatively high, and that the p-values are essentially zero. As such, we reject the null hypothesis of homoscedasticity in our models at the 5\% significance level, for all three years.
+
+\iffalse
+\subsubsection{Diagnostics: Heteroscedasticity}
+For heteroscedasticity, we first examine Model (2)'s residuals plot in Figure A.2. of the appendix. With such close clustering, it’s not obvious from the plot if our model estimate is heteroscedastic; we use the Breusch-Pagan test to formally detect this issue (displayed in Table A.3. of the appendix). At the 5\% significance level, we see that the test model’s overall F score is relatively high, and the p-value is essentially zero. This leads us to reject the null hypothesis that there exists no heteroscedasticity at the 5\% significance level. \\
+
+\subsubsection{Diagnostics: Serial Correlation}
+
+Any analysis involving a time-wise component must not only take into account potential issues of heteroscedasticity (as demonstrated above), but also problems of serial correlation in the residuals. As such, it should be noted that even though we are working with panel data, we are not worried about the presence of autocorrelation affecting our analysis. It should be noted we only have three time periods in our data, and each period is spaced five years apart: as such, serial correlation should not be a problem with regards to Model (2).
+
+\subsubsection{Diagnostics: Unit Roots and Orders of Integration}
+
+Establishing the existence of heteroscedasticity and the non-issue of serial correlation in the residuals, we investigate for the presence of unit roots in our variables of interest. Because our dataset is limited to only three time periods of 2002, 2007, and 2012, we are unable to run the Augmented Dickey-Fuller (ADF) test for unit roots. It is for this reason that we are only able to inspect graphically. \\
+
+Consider the following time series graphs of gross profits, total assets, and percent of revenue held by the top 50 firms in Figure Matrix A.3. of the appendix. We immediately see that all three variables follow a somewhat linear trend, implying that our variables are neither stationary nor integrated of order 1 (i.e., they are not I(0) processes). To determine what specific order of integration these variables are, we take first differences of gross profits and total assets. Due to lack of time periods for percent of revenue held by an industry's top 50 firms, and its graphical similarity with our two other variables, we assume that our conclusions for gross profit and total assets apply. \\
+
+Consider the time series graphs of our first-differenced variables in Figure matrix A.4. of the appendix. We see that the graphs of first-differenced gross profits and total assets seem to be both mean-reverting and have somewhat constant variance. The lack of an obvious trend is additional evidence that our first-differenced variables are I(0) and potentially weakly stationary processes. Since percent of revenue held by the top 50 firms had a similar linear trend, we believe that our three variables are I(1) processes.
+
+\subsection{Establishing Cointegration}
+
+Our variables being I(1) processes imply that our Model (2) regression could be spurious, and therefore invalid. With only three time periods, we cannot resort to establishing the presence of cointegration amongst our variables through statistical tests. Instead, we argue for the presence of cointegration through economic theory and previous empirical work. Specifically, we will attempt to establish that gross profits, total assets, and market concentration are all affected by the same stochastic shock: the business cycle. \\
+
+In terms of economic theory, observe that financing markets often become tighter and raise lending standards during recessions. Such examples can be seen through how ''loan growth at commercial banks decreased substantially and remained negative... after the 2007-08 financial crisis", and how ''lending growth slowed to zero during the 1990-91  and 2001 recessions..." \cite[Dvorkin and Shell, 2016]{Dvorkin2016}. This results in entrepreneurs and people to get external finances needed to start a new business. This tightening in lending credit therefore results in a decrease in new businesses entering a market. We therefore would see an increase in market concentration in an industry. The link between investment and the business cycle is well researched. Boldrin et al. find that residential investment played a crucial role in the severity and duration of the Great Recession. In an NBER working paper, Rognlie et al. argue the combination of falling residential investment, as well as the burst in non-residential investment (the result of low interest rates in a liquidity trap), explain the asymmetric recovery in residential investment during the Great Recession. Understanding the theoretical and empirical evidence that stochastic business cycles affect market concentration, gross profits, and total assets (i.e., investment levels), we have reason to believe that our three variables are cointegrated \cite[Vassolo et al., 2015]{Vassolo01012015}\cite[Gallet and Euzent, 2011]{Gallet2011}\cite[Machin and Van Reenen, 1993]{Machin1993} \cite[Rognlie et al., 2014]{Rognlie2014} \cite[Boldrin et al., 2013]{Boldrin2013}. \\
+
+Establishing our variables to be cointegrated, there are several caveats and changes in interpretation to consider for Model (2). Firstly, OLS regressions performed on cointegrating variables will produce estimators that are super-consistent. This means that because OLS is super-consistent on $\beta$, we have $T(\hat{\beta} - \beta) \xrightarrow{d} \mathcal{N}(0, \Sigma)$ by the Central Limit Theorem \cite[De Pace, 2016]{DePace16}. This faster rate of convergence to the true $\beta$ implies that the relevant asymptotic theory to be applied on $\beta$ for statistical inference is non-standard for OLS regression \cite[De Pace, 2016]{DePace16}. Though this is a caveat for OLS regression performed on small samples, OLS can still be safely used to consistently estimate $\beta$ because estimators $\hat{\beta}$ converge to $\beta$ at a faster rate than normal. Given that our sample size is close to 700, the property of super-consistency should be applicable to Model (2)'s estimators. \\
+
+The property of super-consistency also changes Model (2)'s interpretation to be that of long-run equilibrium between gross profits, total assets, and percent of revenue held by an industry's top 50 firms. By converging to the true parameter values much faster than normal, we are able to assume that Model (2)'s estimators are very close to the true parameter values, given a large enough sample size. This also implies that hypothesis tests and confidence interval construction are not required for long-run interpretation, because the estimators are already rapidly approaching their true values. \\
+
+The final thing to consider is that cointegration results in the OLS estimators of Model (2) to be possibly biased. This seems to not be an issue for Model (2), as its $R^{2}$ is extremely close to one. This high coefficient of determination implies Model (2)'s estimators have little to no bias at all.
+\fi
+
+\subsection{Market Concentration and Profitability: Non-Manufacturing Industries}
+
+Finding our OLS estimations to suffer from heteroscedasticity for all three years, we apply White robust standard errors to properly perform statistical inference. Examining Model (2)'s corrected results in Tables A.8., A.9., and A.10. of the appendix, we see that the coefficient associated with the percentage of revenue held by an industry's top 50 firms is still statistically significant at the 5\% level for all three years. Overall, we find that increases in the revenues held by the top 50 firms in an industry correspond to increases in predicted median gross profits in that industry. A one percentage point increase in market concentration corresponds with an increase in predicted median gross profits of that industry between 4.7 to 8.9 million dollars. In controlling for company size, we find that increases in total assets do not correspond with a strong change in gross profits, with predicted gross profits only increasing by around 4 to 6 cents for every dollar of total assets. Therefore, this allows us to state that there does exist a statistically significant relationship between market concentration and profitability within non-manufacturing industries.
+
+\iffalse
+Finding our OLS estimation to have an interpretation of long-run equilibrium because of cointegration, we disregard heteroscedasticity as a problem for said interpretation. Re-examining Model (2)'s results in Table A.4. of the appendix, we find, in the long run, that increases in the revenues held by the top 50 firms in an industry correspond to increases predicted gross profit levels. A one percentage point increase in industry concentration corresponds with a 8.327 million dollar increase in predicted median gross profits in that industry. In the long run and controlling for company size, we find that increases in total assets do not correspond with a strong change in gross profits, with predicted gross profits only increasing by around 4 cents for every dollar of total assets. Because these non-zero values represent the true values of Model (2)'s super-consistent estimators, we are able to state that there does exists strong relationship between market concentration and profitability amongst non-manufacturing industries.
+\fi
+
+%Finding our OLS estimation to have an interpretation of long-run equilibrium, and be biased only due to heteroscedasticity (and not due to cointegration), we apply White robust standard errors in order to solve this problem. Estimating model (2) with White standard errors, we find that increases in the revenues held by the top 50 firms in an industry correspond to increases in predicted gross profit levels. A one percentage point increase in industry concentration corresponds with a 5.9 million dollar increase in predicted median gross profits in that industry. In controlling for company size, we find that increases in total assets do not correspond with a strong change in gross profits, with predicted gross profits only increasing by around three cents for every dollar of total assets. Both of the coefficients for percent of revenue held by an industry’s top 50 firms and gross profits (lagged by 5 years) are statistically significant at the 1\% level. Therefore, this allows us to state that there does exist a statistically significant relationship between market concentration and profitability.
+
+\iffalse
+\begin{table}[h]
+\begin{tabular}{ c | c }
+	\hline
+	\textbf{Model 2 with White Robust Standard Errors} \\
+    \textbf{Non-Manufacturing Industries} \\
+    \textbf{Regressand: Gross Profits} \\
+    \hline \hline
+    Number of Observations & 698 \\
+	\hline
+    $R^{2}$ & 0.981 \\
+    Adjusted $R^{2}$ & 0.980 \\
+    \hline
+    $F(42, 652)$ & 745.84 \\
+    $Prob > F$ & 0.0000 \\
+    \hline \hline
+\end{tabular} \\
+\begin{tabular}{ l | c }
+	\hline
+	\textbf{Regressors} & \textbf{Estimators} \\
+    & $\hat{\beta}$ \\
+    \hline \hline
+	Total Assets & 0.0401 \\
+	\hline
+    Percent of Revenue Held & 8.327 \\
+    By Industry’s Top 50 Firms & \\
+    \hline
+    \hline \hline
+\end{tabular}
+\mycaption[OLS Estimation of Model (2) with White Standard Errors: Coefficients for Main Regressors, Controlling for Year and Industry Fixed Effects (Not Shown)]{OLS Estimation of Model (2) with White Standard Errors: Coefficients for Main Regressors, Controlling for Year and Industry Fixed Effects (Not Shown)}
+\end{table}
+\fi
+
+\subsection{Market Concentration and Profitability: Manufacturing Industries}
+
+%We apply the same long run interpretation of Model (3), which is our OLS estimation for manufacturing industries. Model (3)'s results are displayed in Table A.5. of the appendix. Similar to Model (2), because the non-zero values represent the true values of Model (2)'s super-consistent estimators, we are able to state that there does exist a relationship between market concentration and profitability amongst manufacturing industries. However, the relationship is weaker, as we find, in the long run, that a one percentage point increase in percent of value added by the top 50 firms in an industry is associated with about an increase in gross profits by 600 thousand dollars.
+
+In the previous analysis, we identify a statistically significant relationship between the percentage of revenues held by the top 50 firms in an industry and profitability. We note that this only applies to non-manufacturing industries: Manufacturing industry concentration is measured as percentage of value added by the top 50 firms in an industry. When performing identical analysis as above, using value-added concentration as our market competition regressor, we fail to reject the null hypothesis, that this variable has no effect on profitability (i.e., that the coefficient associated with this variable is zero), at the 5\% significance level. It should also be noted that the sign and magnitude of this concentration-profitability correlation vary widely across our three years. As such, we are unable to find any statistically significant relationship between market concentration and profitability within manufacturing industries in our available time period. 
+
+\section{Profitability \& Investment}
+\label{sec:sec06}
+
+\initial{N}ow, working with Compustat firm-level data, we test the profit theory of investment. We first test for a linear relationship between gross profits and two measures of investment: Capital expenditures and research and development. We select these two regressands in order to understand how profit levels interact with different types of investment: Excess funds might affect capital expenditures, which boost a firm’s fixed assets, differently from how they affect research and development expenditures, which go towards the development of new technology as well as the improvement of existing ones. The results of Model (3) (capital expenditures as the regressand) and Model (4) (R\&D expense as the regressand) are respectively displayed in Tables A.11. and A.12. of the appendix.
+
+\subsection{Diagnostics}
+
+Looking at the residual plots for both Models (3) and (4) in Figure Matrix A.6., we immediately see that both OLS regression models violate the Gauss-Markov Assumptions due to how the residuals seem to have non-constant variance. Therefore, we can see from the residuals plot themselves that both models (3) and (4) suffer from heteroscedasticity. Observing Figure Matrix A.1 in the Appendix once again, we quickly see that Models (3) and (4) are not valid due to how all of our variables seem to be neither stationary or possess first order of integration (i.e., they are not I(0) processes). This is because our graphs suggest the existence of unit roots in our variables, which causes any hypothesis tests used for conduct statistical inference in our OLS regressions to be incorrect.
+
+\subsection{Solutions \& Results}
+
+Recall the set of models in Section 2.4. In order to properly model the relationship between firm-level profitability and investment using panel data, we utilise a model with firm-specific random effects, industry fixed effects, and time fixed effects. We find a firm-specific random effects model to be appropriate as we want to generalise our results to a larger population of firms within the United States, and we have reason to believe that individual firm characteristics influence our regressand of investment. \\
+
+Suffering from heteroscedasticity and the existence of unit roots, we first transform our variables into growth rates by taking the natural logarithm and first-difference. We see in Figure Matrix A.7. that our variables now seem to be I(0) processes and potentially weakly stationary. We address the issues of heteroscedasticity and autocorrelation by using robust estimation of the Heteroscedasticity and Autocorrelation Consistent (HAC) matrix. We estimate our Generalised Least Squares (GLS) models in Tables A.13. and A.14. of the appendix: We still find our relevant variables to be statistically significant at the 1\% significance level. Controlling for firm size, firm random effects, and year fixed effects, we find that on average, shifts in gross profits correspond to non-negligible changes in investment. In particular, a 100\% increase in gross profits boosts predicted capital expenditures by about 14\%, and boosts predicted R\&D expense by about 8.71\%. These findings indicate that firms only invest a small portion of excess funds; the PTI holds weakly empirically.
+
+%=========================================================

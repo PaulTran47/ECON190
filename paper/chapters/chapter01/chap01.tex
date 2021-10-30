@@ -1,0 +1,113 @@
+%
+% File: chap01.tex
+% Author: Paul Le Tran
+% Description: Chapter that discusses about the two Basis SIR Models: One without and the other with birth and death.
+%
+\let\textcircled=\pgftextcircled
+\chapter{Data \& Descriptions}
+\label{chap:2}
+
+\section{Rationale}
+\label{sec:sec01}
+
+\initial{T}his paper’s analyses and regression models draw upon data from Compustat North America and the Economic Census. The former provides detailed firm level information from the years 1950-2016; we use this dataset to derive measures of profitability and investment across firms and time. Relevant variables from this dataset include net income, gross profits, total assets, and total employees (detailed explanation of all variables will follow in the next section). Economic Census industry concentration data is reported every five years; our sample ranges from the years 2002-2012. Reporting the percent of revenues (for non-manufacturing industries) and the percent of value added (for manufacturing industries) held by the top 4, 8, 20 and 50 firms in each respective industry, the Economic Census covers NAICS codes up to the 6 digit level. We aggregate profit levels by industry with the purposes of linking industry concentration to profitability. By merging with Economic Census data, we compare the revenues held by the top 50 firms in an industry to the relative profit levels in that industry. \\
+
+%=========================================================
+
+\section{Variable Description \& Explanation}
+\label{sec:sec02}
+
+\initial{U}nderstanding the theory behind the PTI and the potential connection between industry concentration and investment levels, we now turn to understanding the specific variables that are used to test the validity of these two relationships empirically.
+
+\subsection{Regressands}
+\label{subsec:subsec01}
+
+\noindent Gross profits: $gp$
+
+Compustat codes this variable in millions of US dollars and defines this variable as the difference between total revenue and cost of goods sold. This variable is the main regressand in the multi-linear regression model that investigates the relationship between market concentration and profit levels. \\
+
+\noindent Capital Expenditures: $capx$
+
+Compustat codes this variable in millions of US dollars and defines this variable as the funds used for additions to property, plant, and equipment, excluding amounts arising from acquisitions (for example, fixed assets of purchased companies), and finally includes property \& equipment expenditures. Therefore, we use this variable to represent industry investment levels when investigating the PTI. \\
+
+\noindent Research and Development (R\&D) Expense: $xrd$
+
+Compustat codes this variable in millions of US dollars and defines this variable as all costs a company incurred during the year that relate to the development of new products or services. By also including software expenses and the amortisation of software costs, we believed that this variable is useful in capturing R\&D levels in both technology-related and non-technology-related industries. We thus use this variable as a regressand when performing a robustness check in our investigation of the PTI.
+
+\subsection{Regressors}
+\label{subsec:subsec02}
+
+\noindent Gross Profits: $gp$
+
+With the definition already established above, we use gross profits as a regressor when investigating the PTI, as this variable represents industry profit levels in the regression. \\
+
+\noindent Percent of Revenue Held By Industry's Top 50 Firms: $revperc50$
+
+The Economic Census codes this variable in percentage points and defines this variable as the percentage of an industry’s revenue held by said industry’s top 50 firms. This variable serves as the main regressor measuring an industry’s level of competition and concentration within non-manufacturing industries, and is used to investigate the relationship between market competition and profits. \\
+
+\noindent Percent of Value Added By Industry's Top 50 Firms: $revperc50$
+
+The Economic Census codes this variable in percentage points and defines this variable as the percentage of an industry’s value added, to overall gross domestic product, by said industry’s top 50 firms. This variable serves as the main regressor measuring an industry’s level of competition and concentration within manufacturing industries, and is used to investigate the relationship between market competition and profits. \\
+
+\noindent Total Assets: $at$
+
+Compustat codes this variable in millions of US dollars and defines this variable as the total assets/liabilities of a company at a point in time. The main purpose of using this variable as a regressor in our models is to ensure we control for company size when working with gross levels of profit and investment. \\
+
+\noindent Fiscal Year (Time Fixed Effects): $\gamma$
+
+Time fixed effects are included in all of the regression models in order to prevent omitted variable bias from affecting the integrity of our parameters. \\
+
+\noindent North American Industrial Classification System Codes (Industry Fixed Effects):
+
+\noindent $\alpha$
+
+Similar to time fixed effects, industry fixed effects are included in all of the regression models in order to prevent omitted variable bias from affecting the integrity of our parameters. Specifically, NAICS code specific up to three digits are used.
+
+%=========================================================
+
+\section{Summary Statistics}
+\label{sec:sec03}
+
+\initial{B}efore testing the relationship amongst industry concentration, profits, and investment via our given variables, it’s necessary to have an understanding of some basic information and trends about each variable. Consider the Table A.1. of summary statistics in the Appendix. We immediately notice negative values for capital expenditures, which, at first, seem difficult to interpret. There is certainly the possibility for coding error, as well as the possibility of alternative accounting methods used by these firms. For example, firms might indicate an inflow of cash due to the sale of capital with negative capital expenditures. In any case, we found through trials of regression analysis that omitting these potential errors does not greatly affect our regression and statistical analyses due to the sheer amount of observations available when compared to how there are only 193 firms that have recorded negative capital expenditures. \\
+
+From quick overview, we see that all firms in all industries cover a wide range of values when it comes to profits, assets, and types of investment. It’s notable that the range of gross profits is massive. Coded in millions of US dollars, the fact that there exists one firm in the dataset that has a recorded gross profit of \$128.130 billion, whilst the average gross profit is about \$410.6 million gives some sense of market power some firms hold across industries. Additionally, observe how the maximum amount of capital expenditures recorded by a firm is a little over half of what the maximum amount of gross profits is. Superficially, this seems to suggest that incurring large amounts of profit might not result in large increases in investment. \\
+
+Consider the time series plots of Figure Matrix A.1, located in the Appendix, for the median of logged gross profits, capital expenditures, R\&D expenses, and total assets. We immediately see that all four measures experienced a sharp decrease during the late 1970s. However, all four variables have increased more or less linearly until near the present time, where the growth has stopped and seems to not be decreasing.
+
+%=========================================================
+
+\section{Estimated Models}
+\label{sec:sec04}
+
+\initial{W}e now turn towards understanding the multi-linear regression models that will be used to investigate the relationship between industry concentration and profits, and the validity of the PTI. Specifically, we have the following models to regress profit levels on industry concentration. Equation (2.1) applies to non-manufacturing industries. Equation (2.2) applies to manufacturing industries.
+
+\iffalse
+\begin{equation}
+	gp_{ijt} = \beta_{o} + \beta_{1}revperc50_{it} + \beta_{2}at_{it} + \beta_{3}gp_{it - 1} + \alpha_{j} + \gamma_{t} + \epsilon_{it},
+\end{equation}
+\fi
+
+\begin{equation}
+	gp_{ijt} = \beta_{o} + \beta_{1}revperc50_{it} + \beta_{2}at_{it} + \alpha_{j} + \epsilon_{it},
+\end{equation}
+
+\noindent and
+
+\begin{equation}
+	gp_{ijt} = \beta_{o} + \beta_{1}percentofvalueadded50_{it} + \beta_{2}at_{it} + \alpha_{j} + \epsilon_{it},
+\end{equation}
+
+\noindent for $\alpha_{j} = \text{industry fixed effects}$. \\
+
+\noindent Additionally, the two following regression models are used to investigate the PTI across all firms:
+\begin{equation}
+	\Delta[ln(capx_{ijt})] = \beta_{o} + \beta_{1}\Delta[ln(gp_{it})] + \beta_{2}\Delta[ln(at_{it})] + \beta_{3}\Delta[ln(capx_{it - 1})] + \alpha_{j} + \gamma_{t} + \epsilon_{it} + \mu_{it}
+\end{equation}
+\noindent and
+\begin{equation}
+	\Delta[ln(xrd_{ijt})] = \beta_{o} + \beta_{1}\Delta[ln(gp_{it})] + \beta_{2}\Delta[ln(at_{it})] + \beta_{3}\Delta[ln(xrd_{it - 1})] + \omega_{j} + \gamma_{t} + \epsilon_{it} + \mu_{it},
+\end{equation}
+
+\noindent for $\alpha_{j} = \text{ industry fixed effects }$, $\gamma_{t} = \text{ time fixed effects}$, and $\mu_{it} = $ normally distributed firm-specific random effects. A detailed explanation of why we estimate Equations (2.2) and (2.3) as random effects models will be provided in Section 3.2.2.
+
+%=========================================================
