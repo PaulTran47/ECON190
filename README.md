@@ -17,11 +17,9 @@
   </ul>
 </details>
 
-=========================================================================
+---
 
 ## Overview
-=========================================================================
-
 This repository hosts all the assets and source code used to create my and Derrick Choes' senior thesis in economics, in accordance with the requirements for the Pomona College course, "Senior Seminar in Economics (ECON190)", in spring 2017.
 
 Abstract: This senior exercise investigates the empirical applicability of the Profits Theory of Investment, and whether it affirms the robustness of investment in the face of increasing market concentration in the United States. We find that whilst the relationship between market concentration and profitability across industries is both statistically significant and strong, the Profits Theory of Investment is statistically significant but weak in terms of the magnitude of its effects. As a result, investment levels in the United States are at risk of declining as markets become less competitive.
@@ -32,11 +30,9 @@ The final paper can be found [hosted on Gary Smith's website](http://economics-f
   (<a href="#econ190">back to top.</a>)
 </p>
 
-=========================================================================
+---
 
 ### Data
-=========================================================================
-
 This [subdirectory](https://github.com/PaulTran47/ECON190/tree/main/data) hosts the datasets used for the creation of this senior thesis. The two main data sources for this thesis are Compustat North America and the Economic Census. The following datasets are merged.
 
 * Computat North America can be found in Compustat2.dta.
@@ -53,37 +49,31 @@ This [subdirectory](https://github.com/PaulTran47/ECON190/tree/main/data) hosts 
   (<a href="#econ190">back to top.</a>)
 </p>
 
-=========================================================================
+---
 
 ### Paper
-=========================================================================
-
 This [subdirectory](https://github.com/PaulTran47/ECON190/tree/main/paper) hosts all the assets and LaTeX source code used to create the senior thesis itself.
 
 <p align="right">
   (<a href="#econ190">back to top.</a>)
 </p>
 
-=========================================================================
+---
 
 ### Programmes
-=========================================================================
-
 This [subdirectory](https://github.com/PaulTran47/ECON190/tree/main/programmes) hosts the two Stata .do files used to conduct the actual empirical analysis of our senior thesis.
 
 <p align="right">
   (<a href="#econ190">back to top.</a>)
 </p>
 
-=========================================================================
+---
 
 ## Prerequisites:
-=========================================================================
-
 * Latest version of Stata.
 
 <p align="right">
   (<a href="#econ190">back to top.</a>)
 </p>
 
-=========================================================================
+---
